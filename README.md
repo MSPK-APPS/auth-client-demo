@@ -28,7 +28,6 @@ Create `.env` in your backend root:
 MSPK_AUTH_API_KEY=your_api_key_here
 MSPK_AUTH_API_SECRET=your_api_secret_here
 GOOGLE_CLIENT_ID=your_google_client_id_here
-AUTH_BASE_URL=https://cpanel.backend.mspkapps.in/api/v1
 ```
 
 ### 1.3 Initialize AuthClient Singleton
@@ -42,8 +41,7 @@ import authclient from '@mspk/auth-client';
 authclient.init({
   apiKey: process.env.MSPK_AUTH_API_KEY,
   apiSecret: process.env.MSPK_AUTH_API_SECRET,
-  googleClientId: process.env.GOOGLE_CLIENT_ID,
-  baseUrl: process.env.AUTH_BASE_URL,
+  googleClientId: process.env.GOOGLE_CLIENT_ID
   // storage: omit on backend (no localStorage)
   // fetch: use global fetch (Node 18+) or pass custom
 });
@@ -669,7 +667,6 @@ function LoginScreen() {
 
 - Inspect backend logs; most errors will be `AuthError` thrown by AuthClient.
 - Make sure backend env vars (`MSPK_AUTH_API_KEY`, `MSPK_AUTH_API_SECRET`) are set.
-- Confirm backend can reach `AUTH_BASE_URL`.
 
 ### Google login succeeds on client but fails on backend
 
